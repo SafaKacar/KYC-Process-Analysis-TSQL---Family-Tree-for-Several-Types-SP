@@ -471,7 +471,7 @@
 																							(AVG(CAST(IsBiggerThanThreshold as int)) OVER (PARTITION BY pcr.TrialCommitId))=1 THEN 1
 																						ELSE 0
 																					END AS IsPassedStep																				
-																	FROM  /*Tablo 'UNKNOWN' EntryType'ları olmadan çekilmelidir. UNKNOWN kaydı TechSign tarafından atanıyor. Papara BE kaydı kullanmıyor. Tarih kısıtı burada verilmelidir*/
+																	FROM  /*Tablo 'UNKNOWN' EntryType'ları olmadan çekilmelidir. UNKNOWN kaydı TechSign tarafından atanıyor. Database BE kaydı kullanmıyor. Tarih kısıtı burada verilmelidir*/
 																					(SELECT CreatedAt,Id,UserKey,TxId, OpType, TrialCommitId, IsBiggerThanThreshold,UserIdentityType FROM FACT_PreKycControlResults (NOLOCK) WHERE 
 																																	EntryType != 'UNKNOWN' 
 																																AND OpType	  IN (0,1,3,4)
